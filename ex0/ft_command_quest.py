@@ -12,9 +12,10 @@ def ft_command_quest() -> None:
         print("No arguments provided!")
     else:
         print(f"Arguments received: {length - 1}")
-        for i in range(1, length):
-            print(f"Argument {i}: {sys.argv[i]}")
-    print(f"Total argument: {len(sys.argv)}")
+    for i in range(1, length):
+        print(f"Argument {i}: {sys.argv[i]}")
+        i += 1
+    print(f"Total arguments: {length}\n")
 
 
 # def ft_command_quest() -> None:
