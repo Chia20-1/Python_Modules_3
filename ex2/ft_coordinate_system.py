@@ -5,8 +5,8 @@ input_prompt: str = ("Enter new coordinates as"
                      " floats in format 'x,y,z':")
 
 
-# Logic is created 3 containers to store the numeric string
-# Put the char accordingly and stop upon seeing ","
+# Create 3 containers to store the numeric string
+# Putchar accordingly and move to the next upon seeing ","
 # To check if there is more tokens, keep track of the comma count
 
 
@@ -22,4 +22,26 @@ def get_player_pos() -> tuple[int, int, int]:
             continue
         elif char == " "
             continue
-        
+        if comma_count == 0
+            token1 += char
+        elif comma_count == 1
+            token2 += char
+        elif comma_count == 2
+            token3 += char
+        else
+            print("Invalid syntax")
+            break
+    else:
+        if comma_count != 2
+            print("Invalid syntax")
+            continue
+        try:
+            x: int = int(token1)
+            y: int = int(token2)
+            z: int = int(token3)
+        except ValueError as e:
+            print("Error on parameter", e)
+
+
+get_player_pos()
+    
