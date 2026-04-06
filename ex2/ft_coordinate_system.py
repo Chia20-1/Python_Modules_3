@@ -11,6 +11,14 @@ input_prompt: str = ("Enter new coordinates as"
 # Create 3 containers to store the numeric string
 # Putchar accordingly and move to the next upon seeing ","
 # To check if there is more tokens, keep track of the comma count
+# Couldn't be specific with Format Error error message
+# Examples only show "Invalid syntax"
+# But best practices will be informational error message
+
+
+class FormatError(Exception):
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
 
 
 def get_player_pos() -> tuple[float, float, float]:
@@ -23,8 +31,7 @@ def get_player_pos() -> tuple[float, float, float]:
         if char == ",":
             comma_count += 1
             if comma_count > 2:
-                print("Invalid syntax")
-                return None
+                raise FormatError("Invalid syntax")
             continue
         elif char == " ":
             continue
@@ -35,8 +42,7 @@ def get_player_pos() -> tuple[float, float, float]:
         elif comma_count == 2:
             token3 += char
     if comma_count != 2:
-        print("Invalid syntax")
-        return None
+        raise FormatError("Invalid syntax")
     x: float = float(token1)
     y: float = float(token2)
     z: float = float(token3)
@@ -62,6 +68,8 @@ def ft_coordinate_system() -> None:
         except ValueError as e:
             print("Error on parameter", e)
         except TypeError:
+            pass
+        except FormatError:
             pass
     print("\nGet a second set of coordinates")
     while True:
