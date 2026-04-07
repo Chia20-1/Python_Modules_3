@@ -46,6 +46,7 @@ def gen_player_achievements() -> None:
     bob: set[str] = set()
     charlie: set[str] = set()
     dylan: set[str] = set()
+    common: set[str] = set()
     alice = fill_set(6, alice)
     bob = fill_set(7, bob)
     charlie = fill_set(9, charlie)
@@ -56,7 +57,10 @@ def gen_player_achievements() -> None:
     print("Player Dylan: ", dylan)
     print()
     print("All distinct achievements: ", achievements)
-
+    print()
+    common = alice.intersection(bob, charlie, dylan)
+    print()
+    print("Common achievements: ", common)
 
 if __name__ == "__main__":
     gen_player_achievements()
