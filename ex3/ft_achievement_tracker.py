@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+
+
+import random
+
+
+"""
+Create a list of achievements
+For each player:
+    Create a set that stores their achievements. This will be empty at first
+    Decide how many achievements we want to have
+    While the set has fewer achievements than our target:
+        Choose a random achievement from the list and add it to the set.
+        // Think: Why is a set good for this?
+
+Choosing a random achievement:
+    Choose a random number from 0 to (list size)
+    Use that number as an index into the list
+"""
+
+
+achievements: list[str] = ["Crafting Genius", "Strategist",
+                           "World Savior", "Speed Runner",
+                           "Survivor", "Master Explorer",
+                           "Treasure Hunter", "Unstoppable",
+                           "First Steps", "Collector Supreme",
+                           "Untouchable", "Sharp Mind",
+                           "Boss Slayer"]
+
+
+def fill_set(count: int, target: set[str]) -> set[str]:
+    for index in range(0, count):
+        target.add(achievements[random.randint(0, len(achievements) - 1)])
+    return target
+
+
+#   names: list = ["alice", "bob", "charlie", "dylan
+#   player: dict = {}
+#   for name in names:
+#   player = {name: set()}
+
+
+def gen_player_achievements() -> None:
+    print("=== Achievement Tracker System ===\n")
+    alice: set[str] = set()
+    bob: set[str] = set()
+    charlie: set[str] = set()
+    dylan: set[str] = set()
+    alice = fill_set(6, alice)
+    bob = fill_set(7, bob)
+    charlie = fill_set(9, charlie)
+    dylan = fill_set(5, dylan)
+    print("Player Alice: ", alice)
+    print("Player Bob: ", bob)
+    print("Player Charlie: ", charlie)
+    print("Player Dylan: ", dylan)
+    print()
+    print("All distinct achievements: ", achievements)
+
+
+if __name__ == "__main__":
+    gen_player_achievements()
