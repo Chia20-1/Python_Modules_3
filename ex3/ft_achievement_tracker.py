@@ -28,6 +28,9 @@ achievements: list[str] = ["Crafting Genius", "Strategist",
                            "Boss Slayer"]
 
 
+master_list: set[str] = set(achievements)
+
+
 def fill_set(count: int, target: set[str]) -> set[str]:
     for index in range(0, count):
         target.add(achievements[random.randint(0, len(achievements) - 1)])
@@ -61,6 +64,17 @@ def gen_player_achievements() -> None:
     common = alice.intersection(bob, charlie, dylan)
     print()
     print("Common achievements: ", common)
+    print()
+    print("Only Alice has:", alice.difference(bob, charlie, dylan))
+    print("Only Bob has:", bob.difference(alice, charlie, dylan))
+    print("Only Charlie has:", charlie.difference(alice, bob, dylan))
+    print("Only Dylan has:", dylan.difference(alice, bob, charlie))
+    print()
+    print("Alice is missing:", master_list.difference(alice))
+    print("Bob is missing:", master_list.difference(bob))
+    print("Charlie is missing:", master_list.difference(charlie))
+    print("Dylan is missing:", master_list.difference(dylan))
+
 
 if __name__ == "__main__":
     gen_player_achievements()
