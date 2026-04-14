@@ -32,7 +32,7 @@ master_list: set[str] = set(achievements)
 
 
 def fill_set(count: int, target: set[str]) -> set[str]:
-    for index in range(0, count):
+    while len(target) < count:
         target.add(achievements[random.randint(0, len(achievements) - 1)])
     return target
 
