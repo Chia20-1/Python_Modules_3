@@ -12,8 +12,8 @@ import sys
 """
 
 
-def parse_input() -> dict:
-    inventory: dict = {}
+def parse_input() -> dict[str, int]:
+    inventory: dict[str, int] = {}
     for arg in sys.argv[1:]:
         try:
             key, value = arg.split(":", 1)
@@ -50,7 +50,7 @@ def find_extremes(inventory: dict[str, int]) -> tuple[str, int, str, int]:
 
 def ft_inventory_system() -> None:
     print("=== Inventory System Analysis ===")
-    inventory: dict = parse_input()
+    inventory: dict[str, int] = parse_input()
     print("Got inventory:", inventory)
     print("Item list: [", end="")
     first = True
