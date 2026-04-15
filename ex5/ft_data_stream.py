@@ -36,6 +36,9 @@ def ft_data_stream() -> None:
     for _ in range(10):
         ten_events.append(next(event_stream))
     print("Built list of 10 events: ", ten_events)
+    for event in consume_event(ten_events):
+        print("Got even from list:", event)
+        print("Events in list:", ten_events)
 
 
 if __name__ == "__main__":
